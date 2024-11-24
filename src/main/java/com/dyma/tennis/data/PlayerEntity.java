@@ -20,7 +20,7 @@ public class PlayerEntity {
     @Column(name = "first_name", length = 50, nullable = false)
     private String firstName;
 
-    @Column(name = "identifier", nullable = false)
+    @Column(name = "identifier", nullable = false, unique = true)
     private UUID identifier;
 
     @Column(name = "birth_date", nullable = false)
