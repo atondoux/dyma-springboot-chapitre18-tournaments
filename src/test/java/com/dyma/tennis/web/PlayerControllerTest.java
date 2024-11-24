@@ -57,7 +57,7 @@ public class PlayerControllerTest {
     public void shouldReturn404NotFound_WhenPlayerDoesNotExist() throws Exception {
         // Given
         String playerToRetrieve = "johndoe";
-        Mockito.when(playerService.getByIdentifier(playerToRetrieve)).thenThrow(new PlayerNotFoundException("Player johndoe does not exist"));
+        Mockito.when(playerService.getByIdentifier(playerToRetrieve)).thenThrow(new PlayerNotFoundException("johndoe"));
 
         // When / Then
         mockMvc.perform(get("/players/johndoe"))
