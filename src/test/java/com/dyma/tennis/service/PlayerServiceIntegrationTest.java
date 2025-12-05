@@ -123,9 +123,8 @@ public class PlayerServiceIntegrationTest {
         UUID playerToDelete = UUID.fromString("aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb");
 
         // When / Then
-        Exception exception = assertThrows(PlayerNotFoundException.class, () -> {
-            playerService.delete(playerToDelete);
-        });
-        Assertions.assertThat(exception.getMessage()).isEqualTo("Player with identifier aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb could not be found.");
+        Assertions.assertThatThrownBy(() -> playerService.delete(playerToDelete))
+                .isInstanceOf(PlayerNotFoundException.class)
+                .hasMessage("Player with identifier aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb could not be found.");
     }
 }
