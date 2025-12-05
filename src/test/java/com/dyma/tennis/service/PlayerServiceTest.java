@@ -76,9 +76,8 @@ public class PlayerServiceTest {
         Mockito.when(playerRepository.findOneByIdentifier(unknownPlayer)).thenReturn(Optional.empty());
 
         // When / Then
-        Exception exception = assertThrows(PlayerNotFoundException.class, () -> {
-            playerService.getByIdentifier(unknownPlayer);
-        });
-        Assertions.assertThat(exception.getMessage()).isEqualTo("Player with identifier aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb could not be found.");
+        Assertions.assertThatThrownBy(() -> playerService.getByIdentifier(unknownPlayer))
+                .isInstanceOf(PlayerNotFoundException.class)
+                .hasMessage("Player with identifier aaaaaaaa-1111-2222-3333-bbbbbbbbbbbb could not be found.");
     }
 }
