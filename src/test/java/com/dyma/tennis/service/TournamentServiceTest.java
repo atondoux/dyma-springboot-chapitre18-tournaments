@@ -4,28 +4,25 @@ import com.dyma.tennis.data.TournamentEntityList;
 import com.dyma.tennis.data.TournamentRepository;
 import com.dyma.tennis.model.Tournament;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@ExtendWith(MockitoExtension.class)
 public class TournamentServiceTest {
 
     @Mock
     private TournamentRepository tournamentRepository;
 
+    @InjectMocks
     private TournamentService tournamentService;
-
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
-        tournamentService = new TournamentService(tournamentRepository);
-    }
 
     @Test
     public void shouldReturnAllTournaments() {
